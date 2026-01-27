@@ -2,7 +2,7 @@ import React from "react";
 import { AppBar, Toolbar, Typography, Box, Button, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 
-function Navbar () {
+function Navbar ({ search, setSearch }) {
     return(
       
     <AppBar position="static" color="primary">
@@ -12,15 +12,21 @@ function Navbar () {
         </Typography>
 
           <Box>
-            <TextField size="small"
-            placeholder="Search products..."
-            variant="outlined"
-            sx={{
-              backgroundColor: "white",
-              borderRadius: 1,
-              minWidth: 200
-            }}
-          />                  
+           <TextField 
+           
+           size="small"
+           placeholder="Search products..."
+          variant="outlined"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)} 
+
+          sx={{
+          backgroundColor: "white",
+          borderRadius: 1,
+          minWidth: 200
+
+          }}/>
+                 
           </Box>
 
         <Box>
