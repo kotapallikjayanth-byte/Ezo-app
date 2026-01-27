@@ -3,7 +3,7 @@ import Image2 from"../assets/images/Image2.png"
 import Image3 from"../assets/images/Image3.png"
 import Image4 from"../assets/images/Image4.png"
 import Image5 from"../assets/images/Image5.png"
-
+import Image6 from"../assets/images/Image6.png"
 
 const products=[
 
@@ -45,6 +45,14 @@ const products=[
     price:2999.00,
     description:"Chota Billing Machine",
     image:Image5,
+},
+
+{
+    id:6,
+    name:"Ezo Thermal Receipt Paper Billing Machine Rolls 2 inch- 58mm(Width) x 10 meter(Length)",
+    price: 1979.00,
+    description:"Ezo Thermal Receipt Paper Billing Machine Rolls 2 inch- 58mm(Width) x 10 meter(Length)",
+    image:Image6,
 }
 
 ];

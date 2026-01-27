@@ -3,8 +3,12 @@ import { CartContext } from "../context/CartContext";
 import products from "../data/products";
 import { Typography, Box, Button } from "@mui/material";
 
-function Product() {
-  const { addToCart } = useContext(CartContext);
+function Product({search}) {
+  const filteredProducts = products.filter((item) =>
+  item.name.toLowerCase().includes(search.toLowerCase())
+);
+
+const { addToCart } = useContext(CartContext);
 
   return (
     <>
@@ -12,12 +16,16 @@ function Product() {
         All PRODUCTS
       </Typography>
 
-      <Box style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-        {products.map((item) => (
+      <Box style={{  display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",  
+          gap: "20px" ,
+          justifyItem:"center"}}>
+
+        {filteredProducts.map((item) => (
           <Box
             key={item.id}
              sx={{
-              width: "220px", 
+              
               border: "1px solid #ddd", 
               padding: "10px", 
               display: "flex", 
@@ -28,7 +36,7 @@ function Product() {
             <img
               src={item.image}
               alt={item.name}
-              style={{ width: "100%", height: "150px", objectFit: "contain" }}
+              style={{ width: "100%", height: "150px", objectFit: "contain", margin:"0 auto", display:"block"}}
             />
 
             <h3>{item.name}</h3>

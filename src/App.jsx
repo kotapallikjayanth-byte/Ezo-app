@@ -6,21 +6,24 @@ import Product from "./pages/Product.jsx";
 import ProductDetails from "./pages/ProductDetails";
 import Contact from "./pages/Contact";
 import CartPage from "./pages/Cartpage/Cart.jsx";
-
+import  { useState } from "react";
 
 
 
 
 function App() {
+
+  const [search, setSearch] = useState("");
   return (
    <>
+
    <BrowserRouter>
 
-   <Navbar/>
+   <Navbar search={search} setSearch={setSearch}/>
 
    <Routes>
     <Route path="/" element={<Home/>}/>
-    <Route path="/Product" element={<Product/>}/>
+    <Route path="/Product" element={<Product search={search}/>}/>
     <Route path="/product/:id" element={<ProductDetails />} />
     <Route path="/Contact" element={<Contact/>}/>
     <Route path="/cart" element={<CartPage />} />
@@ -28,6 +31,9 @@ function App() {
    </Routes>
 
    </BrowserRouter>
+
+   
+  
 </>
    
   );
