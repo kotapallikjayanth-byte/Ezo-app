@@ -31,7 +31,8 @@ const { addToCart } = useContext(CartContext);
               display: "flex", 
               flexDirection: "column", 
               justifyContent: "space-between", 
-              minHeight: "380px"}}
+              minHeight: "380px",
+            transition: "0.3s","&:hover": {transform: "scale(1.06)",}}}
           >
             <img
               src={item.image}
