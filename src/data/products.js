@@ -11,7 +11,7 @@ const products=[
     id:1,
     name:"EZO Billing & Accounting App Subscription",
     price:1499.00,
-    description:"1 Staff Access for EZO Billing & Accounting App Subscription (Recharge)",
+    description:"Get 1 staff access to the EZO Billing & Accounting App. Easily manage invoices, track payments, and handle your business accounts efficiently with this subscription-based solution. Perfect for small and medium businesses looking for seamless billing and accounting.",
     image:Image1,
 },
 
@@ -19,7 +19,7 @@ const products=[
     id:2,
     name:"AI Marketing App Subscription",
     price:7999.00,
-    description:"AI Marketing App Subscription",
+    description:"This superfast, supereasy billing machine comes with a thermal printer. Save time and money with this mobile-operated machine, no ink needed. Perfect for all retail businesses like Restaurants, Kirana Shops, Clothing, and other businesses",
     image:Image2,
 },
 
@@ -27,7 +27,7 @@ const products=[
     id:3,
     name:"Bada Billing Machine",
     price:2999.00,
-    description:"Bada Billing Machine",
+    description:"This superfast, supereasy billing machine comes with a thermal printer and a billing software that prints professional bill in 2 clicks.Save time and money with this mobile-operated machine, no ink needed. Works on thermal printing technology Perfect for all retail businesses like Restaurants, Kirana Shops, Clothing and Other businesses",
     image:Image3,
 },
 
@@ -35,7 +35,7 @@ const products=[
     id:4,
     name:"Bada Billing Machine With Software",
     price:6999.00,
-    description:"Bada Billing Machine With Software",
+    description:"This superfast, supereasy billing machine comes with a thermal printer Save time and money with this mobile-operated machine, no ink needed Perfect for all retail businesses like Restaurants, Kirana Shops, Clothing and Other businesses.",
     image:Image4,
 },
 
@@ -43,7 +43,7 @@ const products=[
     id:5,
     name:"Chota Billing Machine",
     price:2999.00,
-    description:"Chota Billing Machine",
+    description:"This superfast, supereasy billing machine comes with a thermal printer Save time and money with this mobile-operated machine, no ink needed.Perfect for all retail businesses like Restaurants, Kirana Shops, Clothing and Other businesses.",
     image:Image5,
 },
 
@@ -57,4 +57,4 @@ const products=[
 
 ];
 
-export default products
+export default products;

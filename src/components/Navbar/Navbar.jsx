@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Box, Button, TextField } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box, Button, TextField, linkClasses } from "@mui/material";
 import { Link } from "react-router-dom";
 
 function Navbar ({ search, setSearch }) {
@@ -33,16 +33,23 @@ function Navbar ({ search, setSearch }) {
            <Button color="inherit" component={Link} to="/">
              Home
            </Button>
+
            <Button color="inherit" component={Link} to="/product">
              Product
            </Button>
-           <Button color="inherit" component={Link} to="/contact">
+
+           <Button color="inherit" component={Link} to ="ProductDetails">
+            ProductsDetails
+           </Button>
+
+            <Button color="inherit" component={Link} to="/contact">
              Contact
            </Button>
-           
-            <Button color="inherit" component={Link} to="/Cart">
+
+           <Button color="inherit" component={Link} to="/Cart">
              Cart
            </Button>
+
          </Box>
       </Toolbar>
     </AppBar>
