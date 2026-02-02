@@ -1,8 +1,27 @@
-import React from "react";
-import { AppBar, Toolbar, Typography, Box, Button, TextField, linkClasses } from "@mui/material";
+import React,{useState, useEffect} from "react";
+import { AppBar, Toolbar, Typography, Box, Button, TextField, Badge} from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
-function Navbar ({ search, setSearch }) {
+function Navbar ({ search, setSearch, }) {
+
+const { cartCount } = useContext(CartContext);
+
+const [tempSearch, setTempSearch] = useState(search);
+
+useEffect(() => {
+  const handler = setTimeout(() => {
+    setSearch(tempSearch);
+  }, 1000); 
+
+  return () => {
+    clearTimeout(handler); 
+  };
+}, [tempSearch, setSearch]);
+
+
     return(
       
     <AppBar position="static" color="primary">
@@ -17,8 +36,8 @@ function Navbar ({ search, setSearch }) {
            size="small"
            placeholder="Search products..."
           variant="outlined"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)} 
+          value={tempSearch}
+          onChange={(e) => setTempSearch(e.target.value)} 
 
           sx={{
           backgroundColor: "white",
@@ -46,13 +65,16 @@ function Navbar ({ search, setSearch }) {
              Contact
            </Button>
 
-           <Button color="inherit" component={Link} to="/Cart">
+          <Badge badgeContent={cartCount} color="error" invisible={cartCount === 0}  overlap="circular">
+            <Button color="inherit" component={Link} to="/Cart" startIcon={<ShoppingCartIcon />}>
              Cart
-           </Button>
-
+            </Button>
+          </Badge>
          </Box>
       </Toolbar>
     </AppBar>
     )
 }
 export default Navbar
+
+

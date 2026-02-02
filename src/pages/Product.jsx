@@ -13,9 +13,12 @@ function Product({search}) {
 const { addToCart } = useContext(CartContext);
 const navigate = useNavigate()
 
+
+
   return (
     <>
-      <Typography variant="h3" fontWeight="bold" gutterBottom>
+    <Box sx={{ paddingBottom: "120px" }}>
+      <Typography variant="h3" fontWeight="bold" gutterBottom sx={{ textAlign: "center", mb: 4 }}>
         All PRODUCTS
       </Typography>
 
@@ -27,6 +30,8 @@ const navigate = useNavigate()
     maxWidth: "1200px",
     margin: "0 auto",
     justifyItems: "center",
+    marginBottom:"100px",
+    mb:"10"
   }}
 >
   {filteredProducts.map((item) => (
@@ -78,6 +83,7 @@ const navigate = useNavigate()
     </Card>
   ))}
 </Box>
+</Box>
 
 
     </>
@@ -85,3 +91,4 @@ const navigate = useNavigate()
 }
 
 export default Product;
+

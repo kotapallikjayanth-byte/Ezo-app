@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import {  Box,Typography,Card, CardContent, CardMedia,Button,Divider} from "@mui/material";
+import {  Box,Typography,Card, CardContent, CardMedia,Button,} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 
 
 function CartPage() {
 const { cartItems, removeFromcart} = useContext(CartContext);
 
-const total = cartItems.reduce((sum ,item)=>sum + item.price,0)
+const total = cartItems.reduce((sum ,item)=>sum + item.price * item.qty,0)
 return (
   <Box p={3}>
     <Typography variant="h4" fontWeight="bold" gutterBottom>
@@ -41,9 +43,10 @@ return (
                 ₹{item.price}
               </Typography>
 
-              <Button variant="outlined" color="error" sx={{ mt: 1 }} onClick={()=> removeFromcart (item.id)}>
-                Remove
+              <Button variant="outlined"color="error"startIcon={<DeleteIcon />}sx={{ mt: 1 }}onClick={() =>removeFromcart(item.id)}>
+                Delete
               </Button>
+
             </CardContent>
           </Card> 
         ))}
