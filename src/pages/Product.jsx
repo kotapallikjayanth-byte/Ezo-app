@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import products from "../data/products";
-import { Typography, Box, Button } from "@mui/material";
+import { Typography, Box, Button, Card, CardContent, CardMedia, CardActions,} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
 
 function Product({search}) {
   const filteredProducts = products.filter((item) =>
@@ -9,53 +11,84 @@ function Product({search}) {
 );
 
 const { addToCart } = useContext(CartContext);
+const navigate = useNavigate()
+
+
 
   return (
     <>
-      <Typography variant="h3" fontWeight="bold" gutterBottom>
+    <Box sx={{ paddingBottom: "120px" }}>
+      <Typography variant="h3" fontWeight="bold" gutterBottom sx={{ textAlign: "center", mb: 4 }}>
         All PRODUCTS
       </Typography>
 
-      <Box style={{  display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",  
-          gap: "20px" ,
-          justifyItem:"center"}}>
+     <Box
+  sx={{
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: 3,
+    maxWidth: "1200px",
+    margin: "0 auto",
+    justifyItems: "center",
+    marginBottom:"100px",
+    mb:"10"
+  }}
+>
+  {filteredProducts.map((item) => (
+    <Card
+      key={item.id}
+      sx={{
+        width: "100%",
+        maxWidth: "300px",
+        display: "flex",
+        flexDirection: "column",
+        transition: "0.3s",
+        "&:hover": { transform: "scale(1.05)" },
+      }}
+    >
+      <CardMedia
+        component="img"
+        height="160"
+        image={item.image}
+        alt={item.name}
+        sx={{ objectFit: "contain", cursor: "pointer", p: 1 }}
+        onClick={() => navigate(`/product/${item.id}`)}
+      />
 
-        {filteredProducts.map((item) => (
-          <Box
-            key={item.id}
-             sx={{
-              
-              border: "1px solid #ddd", 
-              padding: "10px", 
-              display: "flex", 
-              flexDirection: "column", 
-              justifyContent: "space-between", 
-              minHeight: "380px"}}
-          >
-            <img
-              src={item.image}
-              alt={item.name}
-              style={{ width: "100%", height: "150px", objectFit: "contain", margin:"0 auto", display:"block"}}
-            />
+      <CardContent sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" gutterBottom>
+          {item.name}
+        </Typography>
 
-            <h3>{item.name}</h3>
-            <p>{item.description}</p>
-            <p>₹{item.price}</p>
+        <Typography variant="body2" color="text.secondary">
+          {item.description}
+        </Typography>
+      </CardContent>
 
-            <Box>
-              <Button
-                variant="contained"
-                onClick={() => addToCart(item)}
-              >
-                Add to Cart
-              </Button>
-            </Box>
-          </Box>
-        ))}
+      <Box sx={{ px: 2, pb: 1 }}>
+        <Typography variant="subtitle1" fontWeight="bold">
+          ₹{item.price}
+        </Typography>
       </Box>
+
+      <CardActions sx={{ p: 2 }}>
+        <Button
+          variant="contained"
+          fullWidth
+          onClick={() => addToCart(item)}
+        >
+          Add to Cart
+        </Button>
+      </CardActions>
+    </Card>
+  ))}
+</Box>
+</Box>
+
+
     </>
   );
 }
 
 export default Product;
+
